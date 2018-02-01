@@ -4,25 +4,35 @@ import logo from '../logo.svg';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Section from './Section';
+import DropDown from './DropDown';
 
 class App extends Component {
 
-  render() {
-    const titleOne = 'Waga konia';
-    const titleTwo = 'Wybierz rodzaj paszy';
-    const titleThree = 'Wybierz poziom pracy swojego konia';
+  // titleOne = 'Waga konia';
+  titleTwo = 'Wybierz rodzaj paszy';
+  titleThree = 'Wybierz poziom pracy swojego konia';
 
+  weight = { 
+    title: 'Waga konia',
+    input: 
+      <DropDown
+        dropDownInput={['400kg', '500kg', '600kg', '700kg', '800kg']}
+      />,
+  };
+  
+  render() {
     return (
       <div className="App">
-      <Section
-      titleValue={titleOne}
-      />
-      <Section
-      titleValue={titleTwo}
-      />
-      <Section
-      titleValue={titleThree}
-      />
+        <Section
+          titleValue={this.weight.title}
+          input={this.weight.input}
+        />
+        <Section
+        titleValue={this.titleTwo}
+        />
+        <Section
+          titleValue={this.titleThree}
+        />
       </div>
     )
   }
