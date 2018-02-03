@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class DropDown extends React.Component {
   options(dropDownInput) {
     return dropDownInput.map((weight) => {
@@ -15,7 +14,7 @@ class DropDown extends React.Component {
           <select>
             {this.options(this.props.dropDownInput)}
           </select>
-        </form>,
+        </form>
       </div>
     );
   }
