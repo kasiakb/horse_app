@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class DropDown extends React.Component {
   options(dropDownInput) {
     return dropDownInput.map((weight) => {
-      return <option>{weight}</option>
+      return <option key={weight}>{weight}</option>
     })
   }
 
   render() {
+    console.log(this.props.value)
+    
     return (
       <div className='wagaKonia'>
         <form>
-          <select type='weight' value={this.props.value} onChange={this.props.onChange}>
+          <select name='dropDownInput' type='weight' value={this.props.value} onChange={this.props.onChange}>
             {this.options(this.props.dropDownInput)}
           </select>
         </form>

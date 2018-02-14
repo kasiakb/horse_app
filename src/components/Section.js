@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Title from './Title';
-import DropDown from './DropDown';
-import CheckBox from './CheckBox';
-import SliderWork from './SliderWork';
 
 class Section extends React.Component {
   render() {
