@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 
-class Section extends React.Component {
+class FormSection extends React.Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class Section extends React.Component {
   }
 }
 
-export default Section;
+export default FormSection;
