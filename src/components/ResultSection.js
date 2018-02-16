@@ -2,6 +2,9 @@ import React from 'react';
 import Title from './Title';
 import SmallSliderTitle from './SmallSliderTitle'
 import formsData from '../formsData.json';
+import SmallSliderForage from './SmallSliderForage';
+import Slider from 'rc-slider';
+import Tooltip from 'rc-tooltip';
 
 class ResultSection extends React.Component {
 
@@ -10,10 +13,8 @@ class ResultSection extends React.Component {
       return (
         <div key={sliderTitle}> 
           <label>
-            {/* <input 
-              name = {sliderTitle}
-            /> */}
             {sliderTitle}
+            {/* <SmallSliderForage/> */}
           </label>
         </div>
       )
@@ -40,7 +41,9 @@ class ResultSection extends React.Component {
         <SmallSliderTitle
           smallSliderTitleValue={this.sliderTitle(this.props.selectedCheckboxes)}
         />
-        {this.props.input}
+        <SmallSliderForage
+          smallSliderTitleValue={this.sliderTitle(this.props.selectedCheckboxes)}
+        />
       </div>
     );
   }
