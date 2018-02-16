@@ -1,25 +1,12 @@
 import React from 'react';
 import Title from './Title';
-import SmallSliderTitle from './SmallSliderTitle'
 import formsData from '../formsData.json';
-import SmallSliderForage from './SmallSliderForage';
+import SmallSlider from './SmallSlider';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
 
-class ResultSection extends React.Component {
 
-  sliderTitle(selectedCheckboxes) {
-    return selectedCheckboxes.map((sliderTitle) => {
-      return (
-        <div key={sliderTitle}> 
-          <label>
-            {sliderTitle}
-            {/* <SmallSliderForage/> */}
-          </label>
-        </div>
-      )
-    })
-  }
+class ResultSection extends React.Component {
 
   result = (selectedCheckboxes) => {
     let desc
@@ -32,17 +19,14 @@ class ResultSection extends React.Component {
   }
 
   render() {
-    console.log(this.sliderTitle(this.props.selectedCheckboxes))
+
     return (
       <div>
         <Title
           titleValue={this.result(this.props.selectedCheckboxes)}
         />
-        <SmallSliderTitle
-          smallSliderTitleValue={this.sliderTitle(this.props.selectedCheckboxes)}
-        />
-        <SmallSliderForage
-          smallSliderTitleValue={this.sliderTitle(this.props.selectedCheckboxes)}
+        <SmallSlider
+        selectedCheckboxes={this.props.selectedCheckboxes}
         />
       </div>
     );

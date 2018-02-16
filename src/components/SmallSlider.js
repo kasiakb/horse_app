@@ -3,13 +3,12 @@ import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
-import SmallSliderTitle from './SmallSliderTitle'
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
-class SmallSliderForage extends React.Component {
+class SmallSlider extends React.Component {
     
   marks = {
     0: "0 kg",
@@ -31,23 +30,31 @@ class SmallSliderForage extends React.Component {
     );
   };
 
-  
+  sliderTitle(selectedCheckboxes) {
+    return selectedCheckboxes.map((sliderTitle) => {
+      return (
+        <div style={this.wrapperStyle} key={sliderTitle}> 
+          <label>
+            {sliderTitle}
+            <Slider name={sliderTitle} min={0} max={2} step={0.1} defaultValue={1} handle={this.handle} marks = {this.marks} />
+          </label>
+        </div>
+      )
+    })
+  }
+
   wrapperStyle = { width: 400, margin: 50 };
 
   render() {  
     console.log(this.props.smallSliderTitleValue)
     return (
       <div>
-        <div style={this.wrapperStyle}>
-          <Slider name={this.props.smallSliderTitleValue} min={0} max={2} step={0.1} defaultValue={1} handle={this.handle} marks = {this.marks} />
-        </div>
+        <form>
+          {this.sliderTitle(this.props.selectedCheckboxes)}
+        </form>
     </div>
     );
   }
 }
 
-export default SmallSliderForage
-
-
-
-
+export default SmallSlider
