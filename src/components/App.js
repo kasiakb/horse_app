@@ -6,7 +6,6 @@ import CheckBox from './CheckBox';
 import SliderWork from './SliderWork';
 import formsData from '../formsData.json';
 import ResultSection from './ResultSection';
-// import SmallSliderForage from './SmallSliderForage'
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +40,6 @@ class App extends React.Component {
     }
 
   handleSliderChange(defaultValue) {
-    // console.log(defaultValue)
 
     this.setState({
       workInput: defaultValue,
@@ -52,12 +50,10 @@ class App extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    // console.log(name)
   
     this.setState({
       [name]: value
     });
-    // console.log(name, value)
   }
   
   componentWillMount = () => {
@@ -77,17 +73,15 @@ class App extends React.Component {
     this.setState({
       selectedCheckboxes: this.selectedCheckboxes
     });
-    // console.log(this.selectedCheckboxes.size)
   }
 
   selectedCheckboxesArr() {
-  let array = Array.from(this.selectedCheckboxes);
-  return array
-  }
+    let array = Array.from(this.selectedCheckboxes);
+    return array
+    }
 
   render() {
-    // console.log(this.state.selectedCheckboxes)
-    console.log(this.array)
+   
     return (
       <div>
         <div className="App">
