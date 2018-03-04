@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown component renders the dropdown with the weight correctly renders correctly 1`] = `
+<div
+  className="wagaKonia"
+>
+  <form>
+    <select
+      name="dropDownInput"
+      onChange={[MockFunction]}
+      type="weight"
+      value="500kg"
+    >
+      <option>
+        400kg
+      </option>
+      <option>
+        500kg
+      </option>
+      <option>
+        600kg
+      </option>
+      <option>
+        700kg
+      </option>
+      <option>
+        800kg
+      </option>
+    </select>
+  </form>
+</div>
+`;
