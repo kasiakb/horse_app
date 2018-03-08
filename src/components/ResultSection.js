@@ -4,6 +4,7 @@ import formsData from '../formsData.json';
 import SmallSlider from './SmallSlider';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
+import { resulSectionTitle } from './App-functions';
 
 const Handle = Slider.Handle;
 
@@ -46,11 +47,11 @@ class ResultSection extends React.Component {
 
   smallSlidersValues(checkboxes) {
     // console.log('handle', this.handle) 
-    const sliders = checkboxes.reduce((p, c) => {
-      p.push(
+    const sliders = checkboxes.reduce((arrayWithSlidersValues, sliderName) => {
+      arrayWithSlidersValues.push(
         <SmallSlider
-          key={c}
-          title={c}
+          key={sliderName}
+          title={sliderName}
           defaultValue={0}
           marks={this.marks}
           minCapacity={0}
@@ -59,29 +60,22 @@ class ResultSection extends React.Component {
           passChange={this.passChange}
         />
       )
-      return p
+      return arrayWithSlidersValues
     }, []);
     return sliders
+    
   }
+ 
   
-  result = (selectedCheckboxes) => {
-    let desc
-    if (selectedCheckboxes === [0] || selectedCheckboxes.length === 0 ) {
-      desc = null
-    }else{
-      desc = formsData.resultTitle
-    }
-    return desc
-  }
-
   render() {
   // console.log(this.props.selectedCheckboxes)
   // console.log('state:', this.state)
+  console.log('hello', this.sliders)
   console.log(this.state)
     return (
       <div>
         <Title
-          titleValue={this.result(this.props.selectedCheckboxes)}
+          titleValue={resulSectionTitle(this.props.selectedCheckboxes, formsData.resultTitle)}
         />
         {this.smallSlidersValues(this.props.selectedCheckboxes)}
       </div>
