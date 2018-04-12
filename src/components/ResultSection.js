@@ -5,8 +5,24 @@ import SmallSlider from './SmallSlider';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
 import { resulSectionTitle } from './App-functions';
+import _ from 'lodash'
+import nutritrionData from '../nutritrionData.json';
+import forageData from '../forageData.json';
+import {
+  nutritionStandards,
+  forageStandards,
+  columnVector,
+  matrix,
+  transformArr,
+  removeElements,
+  matrixForm,
+  averageOfResults,
+  solveEquations,
+  equations,
+} from '../components/ResultCalculation-functions'
 
 const Handle = Slider.Handle;
+
 
 class ResultSection extends React.Component {
   constructor(props) {
@@ -63,15 +79,60 @@ class ResultSection extends React.Component {
       return arrayWithSlidersValues
     }, []);
     return sliders
-    
   }
- 
+
+  // columnVector(compose){
+  //     const nutritionObj = nutritionStandards(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData)
+  //     const vectors = compose([
+  //       matrixForm, 
+  //       removeElements, 
+  //       transformArr, 
+  //     ])
+  //   return vectors
+  // } 
+  
+  
+  columnVector(workValue, weightValue, nutritrionData){
+    return _.flowRight([
+      matrixForm, 
+      removeElements, 
+      transformArr, 
+      nutritionStandards
+    ])(workValue, weightValue, nutritrionData)
+  } 
+
+  matrix(selectedCheckboxes, foragenData){
+    return _.flowRight([
+      matrixForm, 
+      removeElements, 
+      transformArr, 
+      forageStandards
+    ])(selectedCheckboxes, foragenData)
+  } 
+
+  // finalResult(matrix, vector) {
+  //   if(matrix[0].length > )
+  //   return _.flowRight([
+  //     averageOfResults,
+  //     solveEquations,
+  //     equations
+  //   ])(matrix, vector)
+  // }
+  
+
+  componentWillMount() {
+    // console.log('vector', this.columnVector())
+  }
   
   render() {
   // console.log(this.props.selectedCheckboxes)
   // console.log('state:', this.state)
   console.log('hello', this.sliders)
   console.log(this.state)
+  console.log('vector', this.columnVector(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData))
+  console.log('matrix', this.matrix(this.props.selectedCheckboxes, forageData.forageData))
+  // console.log('result',this.finalResult(this.matrix(this.props.selectedCheckboxes, forageData.forageData), this.columnVector(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData)))
+  console.log('props', this.props)
     return (
       <div>
         <Title
