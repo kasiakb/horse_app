@@ -10,7 +10,7 @@ export function marksSlider(workInput) {
 }
 
 export function selectedCheckboxes(selectedCheckboxes, name) {
-  if (selectedCheckboxes.has(name)) {
+  if (selectedCheckboxes.has(name) && name != "Siano") {
     selectedCheckboxes.delete(name);
   } else {
     selectedCheckboxes.add(name);
