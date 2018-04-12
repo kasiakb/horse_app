@@ -11,6 +11,8 @@ import {
   selectedCheckboxes,
 } from './App-functions';
 
+import { equation } from './functionalProgramming'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ class App extends React.Component {
     this.state = {
       dropDownInput: formsData.weightInput[2],
       selectedCheckboxes: [],
-      workInput: 66,
+      workInput: 66.66666666666667,
     };
   } 
   
@@ -43,7 +45,7 @@ class App extends React.Component {
   }
 
   componentWillMount () {
-    this.selectedCheckboxes = new Set();
+    this.selectedCheckboxes = new Set(["Siano"]);
   }
 
   handleInputChangeCheckbox(event) {
@@ -53,33 +55,35 @@ class App extends React.Component {
     this.setState({
       selectedCheckboxes: this.selectedCheckboxes
     });
-    console.log(this.state.selectedCheckboxes)
+    console.log("Checboxes:", this.state.selectedCheckboxes)
   }
 
   selectedCheckboxesArr() {
     let array = Array.from(this.selectedCheckboxes);
     return array
+    
   }
 
   render() {
-  
+  console.log(this.state.workInput),
+  console.log("arrFromChecboxes:", this.selectedCheckboxesArr())
     return (
       <div>
         <div className="App">
+        <FormSection
+            titleValue={formsData.workTitle}
+            input={<SliderWork
+              marks={marksSlider(formsData.workInput)}
+              onChange={this.handleSliderChange}
+              defaultValue={this.state.workInput}
+            />}
+            />
           <FormSection
             titleValue={formsData.weightTitle}
             input={<DropDown
               dropDownInput={formsData.weightInput}
               onChange={this.handleInputChangeDropdown}
               value={this.state.dropDownInput}
-            />}
-          />
-          <FormSection
-            titleValue={formsData.workTitle}
-            input={<SliderWork
-              marks={marksSlider(formsData.workInput)}
-              onChange={this.handleSliderChange}
-              defaultValue={this.state.workInput}
             />}
           />
           <FormSection
@@ -92,6 +96,8 @@ class App extends React.Component {
           />
           <ResultSection
             selectedCheckboxes={this.selectedCheckboxesArr()}
+            weightValue = {this.state.dropDownInput}
+            workValue={this.state.workInput}
           />
         </div>
       </div>

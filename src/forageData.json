@@ -1,0 +1,40 @@
+{
+  "forageData": 
+  [
+    {
+      "name": "Owies",
+      "Sucha masa": 0.882,
+      "Jednostki owsiane": 1,
+      "Energia strawna": 11.3,
+      "Biako": 0.093
+    },
+    {
+      "name": "Jęczmień",
+      "Sucha masa": 0.864,
+      "Jednostki owsiane": 0.41,
+      "Energia strawna": 7.4,
+      "Biako": 0.046
+    },
+    {
+      "name": "Drozdze pastewne",
+      "Sucha masa": 0.892,
+      "Jednostki owsiane": 1.29,
+      "Energia strawna": 15.5,
+      "Biako": 0.422
+    },
+    {
+    "name": "Siano",
+    "Sucha masa": 0.859,
+    "Jednostki owsiane": 0.49,
+    "Energia strawna": 7.9,
+    "Biako": 0.073
+    },
+    {
+      "name": "Wysodki buraczane",
+      "Sucha masa": 0.891,
+      "Jednostki owsiane": 0.95,
+      "Energia strawna": 13.1,
+      "Biako": 0.061
+    }
+  ]
+}

@@ -13,8 +13,12 @@ class SmallSlider extends React.Component {
     this.props.passChange(defaultValue, this.props.title)
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.forceUpdate()
+  }
+
   render() {  
-    
+    console.log('props', this.props)
     return (
       <div>
         <form>
@@ -26,11 +30,12 @@ class SmallSlider extends React.Component {
                 name={this.props.title} 
                 min={this.props.minCapacity} 
                 max={this.props.maxCapacity} 
-                step={0.1} 
+                step={0.01} 
                 defaultValue={this.props.defaultValue}
                 handle={this.props.handle} 
                 onChange={this.handleSliderChange}
                 marks = {this.props.marks}
+                value = {this.props.defaultValue}
                 />
             </label>
           </div>

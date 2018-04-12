@@ -1,0 +1,165 @@
+{
+  "nutritrionData":
+  [
+    {
+      "name": 0, 
+      "weight": "400kg", 
+      "Sucha masa": 7.0,
+      "Jednostki owsiane": 4.0,
+      "Energia strawna": 50,
+      "Biako": 0.3
+    },
+    {
+      "name": 0, 
+      "weight": "500kg", 
+      "Sucha masa": 8.75,
+      "Jednostki owsiane": 5.0,
+      "Energia strawna": 63,
+      "Biako": 0.378
+    },
+    {
+      "name": 0, 
+      "weight": "600kg", 
+      "Sucha masa": 10.5,
+      "Jednostki owsiane": 6.0,
+      "Energia strawna": 75,
+      "Biako": 0.450
+    },
+    {
+      "name": 0, 
+      "weight": "700kg",
+      "Sucha masa": 12.25,
+      "Jednostki owsiane": 7,
+      "Energia strawna": 88,
+      "Biako": 0.528
+    },
+    {
+      "name": 0, 
+      "weight": "800kg",
+      "Sucha masa": 14,
+      "Jednostki owsiane": 8,
+      "Energia strawna": 100,
+      "Biako": 0.6
+    },
+    {
+      "name": 33.333333333333336, 
+      "weight": "400kg", 
+      "Sucha masa": 7.4,
+      "Jednostki owsiane": 4.8,
+      "Energia strawna": 60,
+      "Biako": 0.360
+    },
+    {
+      "name": 33.333333333333336, 
+      "weight": "500kg", 
+      "Sucha masa": 9.25,
+      "Jednostki owsiane": 5.8,
+      "Energia strawna": 73,
+      "Biako": 0.438
+    },
+    {
+      "name": 33.333333333333336, 
+      "weight": "600kg", 
+      "Sucha masa": 11.1,
+      "Jednostki owsiane": 6.8,
+      "Energia strawna": 70,
+      "Biako": 0.510
+    },
+    {
+      "name": 33.333333333333336, 
+      "weight": "700kg",
+      "Sucha masa": 12.95,
+      "Jednostki owsiane": 7.8,
+      "Energia strawna": 98,
+      "Biako": 0.588
+    },
+    {
+      "name": 33.333333333333336, 
+      "weight": "800kg",
+      "Sucha masa": 14.8,
+      "Jednostki owsiane": 8.8,
+      "Energia strawna": 110,
+      "Biako": 0.660
+    },
+    {
+      "name": 66.66666666666667, 
+      "weight": "400kg", 
+      "Sucha masa": 7.4,
+      "Jednostki owsiane": 6.4,
+      "Energia strawna": 80,
+      "Biako": 0.48
+    },
+    {
+      "name": 66.66666666666667, 
+      "weight": "500kg", 
+      "Sucha masa": 9.25,
+      "Jednostki owsiane": 7.4,
+      "Energia strawna": 93,
+      "Biako": 0.558
+    },
+    {
+      "name": 66.66666666666667, 
+      "weight": "600kg", 
+      "Sucha masa": 11.1,
+      "Jednostki owsiane": 8.4,
+      "Energia strawna": 105,
+      "Biako": 0.630
+    },
+    {
+      "name": 66.66666666666667, 
+      "weight": "700kg",
+      "Sucha masa": 12.95,
+      "Jednostki owsiane": 9.4,
+      "Energia strawna": 118,
+      "Biako": 0.708
+    },
+    {
+      "name": 66.66666666666667, 
+      "weight": "800kg",
+      "Sucha masa": 14.8,
+      "Jednostki owsiane": 10.4,
+      "Energia strawna": 130,
+      "Biako": 0.780
+    },
+    {
+      "name": 100, 
+      "weight": "400kg", 
+      "Sucha masa": 7.0,
+      "Jednostki owsiane": 8.0,
+      "Energia strawna": 100,
+      "Biako": 0.6
+    },
+    {
+      "name": 100, 
+      "weight": "500kg", 
+      "Sucha masa": 8.75,
+      "Jednostki owsiane": 9.0,
+      "Energia strawna": 113,
+      "Biako": 0.678
+    },
+    {
+      "name": 100, 
+      "weight": "600kg", 
+      "Sucha masa": 10.5,
+      "Jednostki owsiane": 10.0,
+      "Energia strawna": 125,
+      "Biako": 0.750
+    },
+    {
+      "name": 100, 
+      "weight": "700kg",
+      "Sucha masa": 12.25,
+      "Jednostki owsiane": 11.0,
+      "Energia strawna": 138,
+      "Biako": 0.828
+    },
+    {
+      "name": 100, 
+      "weight": "800kg",
+      "Sucha masa": 14,
+      "Jednostki owsiane": 12,
+      "Energia strawna": 150,
+      "Biako": 0.9
+    }
+  ]
+}
