@@ -16,10 +16,9 @@ import {
   transformArr,
   removeElements,
   matrixForm,
-  averageOfResults,
-  solveEquations,
-  equations,
-} from '../components/ResultCalculation-functions'
+  energyEquation,
+  onlyHay
+} from '../components/Calculations-functions'
 
 const Handle = Slider.Handle;
 
@@ -28,15 +27,35 @@ class ResultSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sliders: {},
+      sliders: this.slidersValuesParser(props)
     };
 
     this.passChange = this.passChange.bind(this);
   }
 
-  marks = {
-    0: "0 kg",
-    2: "2 kg"
+  componentWillReceiveProps(nextProps) {
+    if(this.slidersValuesParser(nextProps) !== (this.state.sliders)) {
+      this.setState({
+        sliders: this.slidersValuesParser(nextProps)
+      })
+    }
+  }
+
+  slidersValuesParser(props) {
+    const results = energyEquation(
+      this.matrix(props.selectedCheckboxes, forageData.forageData),
+      this.columnVector(props.workValue, props.weightValue, nutritrionData.nutritrionData), 
+      props.weightValue, 
+      props.selectedCheckboxes)
+    const sliders = results.reduce((slidersObject, sliderValues) => {
+      this.passChange(sliderValues[2], sliderValues[0])
+      slidersObject[sliderValues[0]] = {
+        maxValue: sliderValues[1],
+        currentValue: sliderValues[2],
+      }
+      return slidersObject
+    }, {})
+    return sliders
   }
 
   handle = (props) => {
@@ -56,41 +75,41 @@ class ResultSection extends React.Component {
   };
 
   passChange(defaultValue, title) {
-    this.setState({
-      [title]: defaultValue,
+    this.setState((prevState, props) => {
+      if(prevState.sliders[title] && title != 'Siano') {
+        return prevState.sliders[title].currentValue = defaultValue
+      }
     })
+      
   }
 
-  smallSlidersValues(checkboxes) {
-    // console.log('handle', this.handle) 
-    const sliders = checkboxes.reduce((arrayWithSlidersValues, sliderName) => {
-      arrayWithSlidersValues.push(
+  newMarks(number) {
+    const roundNum = Math.round(number, 1)
+    const properties = [0, roundNum]
+    const values = ["0 kg", `${roundNum} kg`]
+    const marks = _.zipObject(properties, values)
+    return marks
+  }
+    
+  smallSlidersValues() {
+    const sliders = Object.keys(this.state.sliders).reduce((slidersArray, sliderTitle) => {
+      console.log('current', this.state.sliders[sliderTitle].currentValue, 'max', this.state.sliders[sliderTitle].maxValue)
+      slidersArray.push(
         <SmallSlider
-          key={sliderName}
-          title={sliderName}
-          defaultValue={0}
-          marks={this.marks}
+          key={sliderTitle}
+          title={sliderTitle}
+          defaultValue={this.state.sliders[sliderTitle].currentValue}
+          marks={this.newMarks(this.state.sliders[sliderTitle].maxValue)}
           minCapacity={0}
-          maxCapacity={2}
+          maxCapacity={Math.round(this.state.sliders[sliderTitle].maxValue)}
           handle={this.handle}
           passChange={this.passChange}
         />
       )
-      return arrayWithSlidersValues
-    }, []);
+      return slidersArray
+    }, [])
     return sliders
   }
-
-  // columnVector(compose){
-  //     const nutritionObj = nutritionStandards(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData)
-  //     const vectors = compose([
-  //       matrixForm, 
-  //       removeElements, 
-  //       transformArr, 
-  //     ])
-  //   return vectors
-  // } 
-  
   
   columnVector(workValue, weightValue, nutritrionData){
     return _.flowRight([
@@ -110,35 +129,14 @@ class ResultSection extends React.Component {
     ])(selectedCheckboxes, foragenData)
   } 
 
-  // finalResult(matrix, vector) {
-  //   if(matrix[0].length > )
-  //   return _.flowRight([
-  //     averageOfResults,
-  //     solveEquations,
-  //     equations
-  //   ])(matrix, vector)
-  // }
-  
-
-  componentWillMount() {
-    // console.log('vector', this.columnVector())
-  }
-  
   render() {
-  // console.log(this.props.selectedCheckboxes)
-  // console.log('state:', this.state)
-  console.log('hello', this.sliders)
-  console.log(this.state)
-  console.log('vector', this.columnVector(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData))
-  console.log('matrix', this.matrix(this.props.selectedCheckboxes, forageData.forageData))
-  // console.log('result',this.finalResult(this.matrix(this.props.selectedCheckboxes, forageData.forageData), this.columnVector(this.props.workValue, this.props.weightValue, nutritrionData.nutritrionData)))
-  console.log('props', this.props)
+  console.log("state", this.state)
     return (
       <div>
         <Title
           titleValue={resulSectionTitle(this.props.selectedCheckboxes, formsData.resultTitle)}
         />
-        {this.smallSlidersValues(this.props.selectedCheckboxes)}
+        {this.smallSlidersValues()}
       </div>
     );
   }

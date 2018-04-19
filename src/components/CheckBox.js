@@ -2,8 +2,9 @@ import React from 'react';
 
 class CheckBox extends React.Component {
   checkBoxes(checkBoxInput) {
+    let result
     return checkBoxInput.map((forage) => {
-      return (
+      if (forage != "Siano") {result = (
         <div key={forage}> 
           <label>
             <input 
@@ -15,7 +16,22 @@ class CheckBox extends React.Component {
             {forage}
           </label>
         </div>
-      )
+      )}else{
+        result = (
+          <div key={forage}> 
+            <label>
+              <input 
+                name = {forage}
+                type='checkbox'
+                checked="checked"
+                onChange={this.props.onChange}
+                disabled
+              />
+              {forage}
+            </label>
+          </div>
+        )}
+        return result
     })
   }
 

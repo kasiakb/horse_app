@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   componentWillMount () {
-    this.selectedCheckboxes = new Set();
+    this.selectedCheckboxes = new Set(["Siano"]);
   }
 
   handleInputChangeCheckbox(event) {
@@ -65,7 +65,7 @@ class App extends React.Component {
   }
 
   render() {
-  console.log(this.state.workInput)
+  console.log(this.state.workInput),
   console.log("arrFromChecboxes:", this.selectedCheckboxesArr())
     return (
       <div>
