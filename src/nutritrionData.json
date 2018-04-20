@@ -42,7 +42,7 @@
       "Biako": 0.6
     },
     {
-      "name": 33.333333333333336, 
+      "name": 33, 
       "weight": "400kg", 
       "Sucha masa": 7.4,
       "Jednostki owsiane": 4.8,
@@ -50,7 +50,7 @@
       "Biako": 0.360
     },
     {
-      "name": 33.333333333333336, 
+      "name": 33, 
       "weight": "500kg", 
       "Sucha masa": 9.25,
       "Jednostki owsiane": 5.8,
@@ -58,7 +58,7 @@
       "Biako": 0.438
     },
     {
-      "name": 33.333333333333336, 
+      "name": 33, 
       "weight": "600kg", 
       "Sucha masa": 11.1,
       "Jednostki owsiane": 6.8,
@@ -66,7 +66,7 @@
       "Biako": 0.510
     },
     {
-      "name": 33.333333333333336, 
+      "name": 33, 
       "weight": "700kg",
       "Sucha masa": 12.95,
       "Jednostki owsiane": 7.8,
@@ -74,7 +74,7 @@
       "Biako": 0.588
     },
     {
-      "name": 33.333333333333336, 
+      "name": 33, 
       "weight": "800kg",
       "Sucha masa": 14.8,
       "Jednostki owsiane": 8.8,
@@ -82,7 +82,7 @@
       "Biako": 0.660
     },
     {
-      "name": 66.66666666666667, 
+      "name": 66, 
       "weight": "400kg", 
       "Sucha masa": 7.4,
       "Jednostki owsiane": 6.4,
@@ -90,7 +90,7 @@
       "Biako": 0.48
     },
     {
-      "name": 66.66666666666667, 
+      "name": 66, 
       "weight": "500kg", 
       "Sucha masa": 9.25,
       "Jednostki owsiane": 7.4,
@@ -98,7 +98,7 @@
       "Biako": 0.558
     },
     {
-      "name": 66.66666666666667, 
+      "name": 66, 
       "weight": "600kg", 
       "Sucha masa": 11.1,
       "Jednostki owsiane": 8.4,
@@ -106,7 +106,7 @@
       "Biako": 0.630
     },
     {
-      "name": 66.66666666666667, 
+      "name": 66, 
       "weight": "700kg",
       "Sucha masa": 12.95,
       "Jednostki owsiane": 9.4,
@@ -114,7 +114,7 @@
       "Biako": 0.708
     },
     {
-      "name": 66.66666666666667, 
+      "name": 66, 
       "weight": "800kg",
       "Sucha masa": 14.8,
       "Jednostki owsiane": 10.4,

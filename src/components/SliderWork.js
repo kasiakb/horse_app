@@ -5,7 +5,6 @@ class SliderWork extends React.Component {
   style = { width: 400, margin: 50 };
 
   render() {  
-    
     return (
       <div className='Work'>
         <form>

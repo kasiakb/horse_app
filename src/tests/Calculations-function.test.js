@@ -8,7 +8,7 @@ import {
   transformArr,
   removeElements,
   matrixForm,
-  energyEquation,
+  dataForSmallSliders,
   onlyHay
 } from '../components/Calculations-functions'
 
@@ -178,22 +178,12 @@ test('change array into matrix form(2)', () => {
   )
 })
 
-// test('find energy equation', () => {
-//   var fakeMatrix = [[5, 3, 5, 9], [2, 5, 13, 8], [7, 8, 9, 10], [6, 1, 3, 5]]
-//   const fakeVector = [6, 13, 9, 4]
-//   // const math = require('mathjs');
-//   const fakeResult = energyEquation(fakeMatrix, fakeVector)
-//   expect(fakeResult).toEqual(
-//     [[5, 13, 9, 3], [9]]
-//   )
-// })
-
-test('create object with energy equation result', () => {
+test('create array with date for small sliders(1)', () => {
   const fakeMatrix = [[0.859, 0.49, 7.9, 0.073], [0.892, 1.29, 15.5, 0.422], [0.882, 1, 11.3, 0.093], [0.864, 0.41, 7.4, 0.046]]
   const fakeVector = [11.1, 8.4, 105, 0.63]
   const fakeHorseWeight = ["600kg"]
   const fakeCheckboxes = ["Siano", "Drozdze pastewne", "Owies", "Jęczmień"]
-  const fakeResult = energyEquation(fakeMatrix, fakeVector, fakeHorseWeight, fakeCheckboxes)
+  const fakeResult = dataForSmallSliders(fakeMatrix, fakeVector, fakeHorseWeight, fakeCheckboxes)
   expect(fakeResult).toEqual(
     [
       ["Siano", 13.291139240506329, 12], 
@@ -204,11 +194,11 @@ test('create object with energy equation result', () => {
   )
 })
 
-test('only hay 1', () => {
+test('create array with date for small sliders(2)', () => {
   const fakeMatrix = [0.859, 0.49, 7.9, 0.073]
   const fakeVector = [11.1, 8.4, 105, 0.63]
   const fakeHorseWeight = ["600kg"]
   const fakeCheckboxes = ["Siano"]
-  const fakeResult = energyEquation(fakeMatrix, fakeVector, fakeHorseWeight, fakeCheckboxes)
-  expect(fakeResult).toEqual(["Siano", 13.291139240506329, 12])
+  const fakeResult = dataForSmallSliders(fakeMatrix, fakeVector, fakeHorseWeight, fakeCheckboxes)
+  expect(fakeResult).toEqual([["Siano", 13.291139240506329, 12]])
 })
