@@ -11,17 +11,13 @@ import forageData from '../forageData.json';
 import {
   nutritionStandards,
   forageStandards,
-  columnVector,
-  matrix,
   transformArr,
   removeElements,
   matrixForm,
-  energyEquation,
-  onlyHay
+  dataForSmallSliders,
 } from '../components/Calculations-functions'
 
 const Handle = Slider.Handle;
-
 
 class ResultSection extends React.Component {
   constructor(props) {
@@ -41,76 +37,6 @@ class ResultSection extends React.Component {
     }
   }
 
-  slidersValuesParser(props) {
-    const results = energyEquation(
-      this.matrix(props.selectedCheckboxes, forageData.forageData),
-      this.columnVector(props.workValue, props.weightValue, nutritrionData.nutritrionData), 
-      props.weightValue, 
-      props.selectedCheckboxes)
-    const sliders = results.reduce((slidersObject, sliderValues) => {
-      this.passChange(sliderValues[2], sliderValues[0])
-      slidersObject[sliderValues[0]] = {
-        maxValue: sliderValues[1],
-        currentValue: sliderValues[2],
-      }
-      return slidersObject
-    }, {})
-    return sliders
-  }
-
-  handle = (props) => {
-    const { value, dragging, index, ...restProps } = props;
-    
-    return (
-      <Tooltip
-        prefixCls="rc-slider-tooltip"
-        overlay={`${value} kg`}
-        visible={true}
-        placement="top"
-        key={index}
-      >
-        <Handle value={value} {...restProps} />
-      </Tooltip>
-    );
-  };
-
-  passChange(defaultValue, title) {
-    this.setState((prevState, props) => {
-      if(prevState.sliders[title] && title != 'Siano') {
-        return prevState.sliders[title].currentValue = defaultValue
-      }
-    })
-      
-  }
-
-  newMarks(number) {
-    const roundNum = Math.round(number, 1)
-    const properties = [0, roundNum]
-    const values = ["0 kg", `${roundNum} kg`]
-    const marks = _.zipObject(properties, values)
-    return marks
-  }
-    
-  smallSlidersValues() {
-    const sliders = Object.keys(this.state.sliders).reduce((slidersArray, sliderTitle) => {
-      console.log('current', this.state.sliders[sliderTitle].currentValue, 'max', this.state.sliders[sliderTitle].maxValue)
-      slidersArray.push(
-        <SmallSlider
-          key={sliderTitle}
-          title={sliderTitle}
-          defaultValue={this.state.sliders[sliderTitle].currentValue}
-          marks={this.newMarks(this.state.sliders[sliderTitle].maxValue)}
-          minCapacity={0}
-          maxCapacity={Math.round(this.state.sliders[sliderTitle].maxValue)}
-          handle={this.handle}
-          passChange={this.passChange}
-        />
-      )
-      return slidersArray
-    }, [])
-    return sliders
-  }
-  
   columnVector(workValue, weightValue, nutritrionData){
     return _.flowRight([
       matrixForm, 
@@ -129,8 +55,74 @@ class ResultSection extends React.Component {
     ])(selectedCheckboxes, foragenData)
   } 
 
+  slidersValuesParser(props) {
+    const results = dataForSmallSliders(
+      this.matrix(props.selectedCheckboxes, forageData.forageData),
+      this.columnVector(props.workValue, props.weightValue, nutritrionData.nutritrionData), 
+      props.weightValue, 
+      props.selectedCheckboxes)
+    const sliders = results.reduce((slidersObject, sliderValues) => {
+      this.passChange(sliderValues[2], sliderValues[0])
+      slidersObject[sliderValues[0]] = {
+        maxValue: sliderValues[1],
+        currentValue: sliderValues[2],
+      }
+      return slidersObject
+    }, {})
+    return sliders
+  }
+
+  passChange(newValue, title) {
+    this.setState((prevState, props) => {
+      if(prevState.sliders[title] && title != 'Siano') {
+        return prevState.sliders[title].currentValue = newValue
+      }
+    })
+  }
+
+  handle(props) {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={`${value} kg`}
+        visible={true}
+        placement="top"
+        key={index}
+      >
+        <Handle value={value} {...restProps} />
+      </Tooltip>
+    );
+  }
+
+  marks(number) {
+    const roundNum = Math.round(number, 1)
+    const properties = [0, roundNum]
+    const values = ["0 kg", `${roundNum} kg`]
+    const marks = _.zipObject(properties, values)
+    return marks
+  }
+    
+  smallSlidersValues() {
+    const sliders = Object.keys(this.state.sliders).reduce((slidersArray, sliderTitle) => {
+      slidersArray.push(
+        <SmallSlider
+          key={sliderTitle}
+          title={sliderTitle}
+          defaultValue={this.state.sliders[sliderTitle].currentValue}
+          marks={this.marks(this.state.sliders[sliderTitle].maxValue)}
+          minCapacity={0}
+          maxCapacity={Math.round(this.state.sliders[sliderTitle].maxValue)}
+          handle={this.handle}
+          passChange={this.passChange}
+        />
+      )
+      return slidersArray
+    }, [])
+    return sliders
+  }
+  
   render() {
-  console.log("state", this.state)
     return (
       <div>
         <Title

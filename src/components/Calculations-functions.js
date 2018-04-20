@@ -16,13 +16,12 @@ export function forageStandards(selectedForage, forageStandards) {
     _.curry((name, obj) => (obj.name === name))
     
   const newObject = 
-  selectedForage.reduce((add, forage) => {
-    add.push(forageStandards.filter(hasValue(forage)))
-      return add
-  }
-  , [])
-
-return newObject
+    selectedForage.reduce((add, forage) => {
+      add.push(forageStandards.filter(hasValue(forage)))
+        return add
+    }
+    , [])
+  return newObject
 }
 
 export function transformArr(newObject) {
@@ -54,26 +53,33 @@ export function matrixForm(onlyNumbers) {
 return matrix
 }
 
-export function energyEquation(matrix, vector, horseWeight, selectedCheckboxes) {  
-  const transposedMatrix = [...math.transpose(matrix)]
-  const transposedVector = [...math.transpose(vector)]
+export function dataForSmallSliders(matrix, vector, horseWeight, selectedCheckboxes) {  
+  function selectFactors(matrix) {
     let energyEquationFactor
     if (selectedCheckboxes.length === 1) {
-      energyEquationFactor = [transposedMatrix[2]]
+      energyEquationFactor = [[...math.transpose(matrix)][2]]
     }else{
-      energyEquationFactor = transposedMatrix[2]
+      energyEquationFactor = [...math.transpose(matrix)][2]
     }
-  const energyEquationResult = transposedVector[2]
+    return energyEquationFactor
+  }
+
+  function selectResult(vector) {
+    const energyEquationResult = [...math.transpose(vector)][2]
+    return energyEquationResult
+  }
   const weightOfHay = parseInt(horseWeight)*0.02
-  const totalEnergyWithoutHayEnergy = energyEquationResult - (weightOfHay*energyEquationFactor.slice(0, 1))
-  const newEnergyEquationFactors = energyEquationFactor.slice(1)
+  const totalEnergyWithoutHayEnergy = selectResult(vector) - (weightOfHay*selectFactors(matrix).slice(0, 1))
+  const newEnergyEquationFactors = selectFactors(matrix).slice(1)
+  
   const arrayWithMarks = newEnergyEquationFactors.reduce((newArr, currArr) => {
     newArr.push(totalEnergyWithoutHayEnergy/currArr)
     return newArr
   }
   , [])
   const copy = [...arrayWithMarks]
-  const finalArrayWithMarks = copy.unshift(energyEquationResult/energyEquationFactor.slice(0, 1))
+  const finalArrayWithMarks = copy.unshift(selectResult(vector)/selectFactors(matrix).slice(0, 1))
+  
   const sumOfFactors = newEnergyEquationFactors.reduce((acc, curr) => acc+curr, 0)
   const defoultValueForSliders = totalEnergyWithoutHayEnergy/sumOfFactors
   const combineArrays = _.zip(selectedCheckboxes, copy)
@@ -88,5 +94,3 @@ export function energyEquation(matrix, vector, horseWeight, selectedCheckboxes) 
   
 return dataForSliders
 }
-
-

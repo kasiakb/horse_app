@@ -11,8 +11,6 @@ import {
   selectedCheckboxes,
 } from './App-functions';
 
-import { equation } from './functionalProgramming'
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +22,7 @@ class App extends React.Component {
     this.state = {
       dropDownInput: formsData.weightInput[2],
       selectedCheckboxes: [],
-      workInput: 66.66666666666667,
+      workInput: 66,
     };
   } 
   
@@ -55,18 +53,14 @@ class App extends React.Component {
     this.setState({
       selectedCheckboxes: this.selectedCheckboxes
     });
-    console.log("Checboxes:", this.state.selectedCheckboxes)
   }
 
   selectedCheckboxesArr() {
     let array = Array.from(this.selectedCheckboxes);
     return array
-    
   }
 
   render() {
-  console.log(this.state.workInput),
-  console.log("arrFromChecboxes:", this.selectedCheckboxesArr())
     return (
       <div>
         <div className="App">

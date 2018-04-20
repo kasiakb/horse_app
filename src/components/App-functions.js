@@ -1,7 +1,7 @@
 
 export function marksSlider(workInput) {
   const length = workInput.length - 1
-  const delta = 100/length;
+  const delta = Math.round(100/length);
   const numericKeys = workInput.map((_, i) => {
     return delta*i})
   const marks = {};
