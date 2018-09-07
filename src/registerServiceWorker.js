@@ -7,6 +7,12 @@
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
+// require('babel-core/register')({
+//   presets: ['es2015', 'react']
+// });
+// require.extensions['.styl'] = () => {
+//   return;
+// };
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||

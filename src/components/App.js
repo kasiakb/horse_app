@@ -10,18 +10,20 @@ import ResultSection from './ResultSection';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dropDownInput: formsData.weightInput[2],
-      selectedCheckboxes: [],
-      workInput: 66,
-    };
-    
+
     this.handleInputChangeCheckbox = this.handleInputChangeCheckbox.bind(this);
     this.handleInputChangeDropdown = this.handleInputChangeDropdown.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
     this.keys = this.keys.bind(this); 
     this.marksSlider = this.marksSlider.bind(this);
-  }
+  
+    this.state = {
+      dropDownInput: formsData.weightInput[2],
+      selectedCheckboxes: [],
+      workInput: 66,
+    };
+  } 
+    
 
   keys(workInput) {
       const length = workInput.length - 1
@@ -55,8 +57,13 @@ class App extends React.Component {
       [name]: value
     });
   }
+
+  // componentWillMount () {
+  //   this.selectedCheckboxes = new Set();
+  // }
+
   
-  componentWillMount = () => {
+  componentWillMount () {
     this.selectedCheckboxes = new Set();
   }
 
@@ -78,10 +85,22 @@ class App extends React.Component {
   selectedCheckboxesArr() {
     let array = Array.from(this.selectedCheckboxes);
     return array
-    }
+  }
+
+  // test() {
+  //   if (4 !== 'object') {
+  //     throw new Error ('This is not an array')
+  //   }
+  // }
+
+  sum(a, b) {
+    return a + b;
+  }
+  
+  
 
   render() {
-   
+  //  this.test()
     return (
       <div>
         <div className="App">
@@ -117,6 +136,5 @@ class App extends React.Component {
     )
   }
 }
-
 
 export default App;

@@ -1,0 +1,24 @@
+{
+  "ignore": [],
+  "env": {
+    "production": {
+      "presets":  [["es2015", { "modules": false }], "stage-0", "react", "flow"],
+      "plugins": ["lodash", "transform-runtime", "transform-es2015-modules-commonjs"]
+    },
+    "testing": {
+      "presets":[
+        "es2015",
+        "stage-0",
+        "react",
+        "flow"],
+      "plugins": ["lodash", "transform-runtime", "transform-es2015-modules-commonjs"]
+    },
+    "development": {
+      "presets": [["es2015", { "modules": false }], "stage-0", "react", "flow"],
+      "plugins": ["lodash", "transform-runtime", "transform-es2015-modules-commonjs"]
+    },
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/webpack-babel-jest"
+    }
+  }
+}
