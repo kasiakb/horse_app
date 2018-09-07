@@ -16,7 +16,8 @@ class App extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
-    // this.forms.weight = this.forms.weight.bind(this);
+    this.keys = this.keys.bind(this); 
+    this.marksSlider = this.marksSlider.bind(this);
 
     this.forms = {
       weight: { 
@@ -41,14 +42,29 @@ class App extends Component {
         title: 'Wybierz poziom pracy swojego konia',
         input: 
           <SliderWork
-            workInput={['Brak pracy', 'Lekka praca', 'Średnia prca', 'Cięzka praca']}
+            marks={this.marksSlider()}
             onChange={this.handleSliderChange}
             defaultValue={this.state.workInput}
           />,
       },
     }
   }
-  
+
+  keys(workInput) {
+      const length = workInput.length - 1
+      const delta = 100/length;
+      const numericKeys = workInput.map((_, i) => {
+        return delta*i
+      })
+      return numericKeys
+    }
+
+  marksSlider() {
+    const workInput=['Brak pracy', 'Lekka praca', 'Średnia praca', 'Cięzka praca']
+    const marks = {};
+    this.keys(workInput).forEach((key, i) => marks[key] = workInput[i]);
+      return marks
+    }
 
   handleSliderChange(defaultValue) {
     console.log(defaultValue)
