@@ -1,0 +1,28 @@
+
+{
+  "weightTitle": ["Waga konia"],
+
+  "weightInput": [
+    "400kg", 
+    "500kg", 
+    "600kg", 
+    "700kg", 
+    "800kg"],
+
+  "workTitle": ["Wybierz poziom pracy swojego konia"],
+
+  "workInput": [
+    "Brak pracy", 
+    "Lekka praca", 
+    "Średnia praca", 
+    "Cięzka praca"],
+  
+  "forageTitle": ["Wybierz paszę, którą chcesz karmić swojego konia"],
+
+  "forageInput": [
+    "Owies", 
+    "Jęczmień", 
+    "Wysłodki buraczane", 
+    "Drozdze pastewne",
+    "siano"]
+  }

@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class CheckBox extends React.Component {
   checkBoxes(checkBoxInput) {
     return checkBoxInput.map((forage) => {
       return (
-        <div> 
+        <div key={forage}> 
           <label>
             <input 
+              name = {forage}
               type='checkbox'
               checked={this.props.checked}
               onChange={this.props.onChange}

@@ -1,53 +1,25 @@
-import React, { Component } from 'react';
-import Slider from 'rc-slider';
+import React from 'react';
 import 'rc-slider/assets/index.css';
 import Section from './Section';
 import DropDown from './DropDown';
 import CheckBox from './CheckBox';
 import SliderWork from './SliderWork';
+import formsData from '../formsData.json';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropDownInput: '400 kg',
-      checkBoxInput: false,
+      dropDownInput: formsData.weightInput[2],
+      selectedCheckboxes: null,
       workInput: 66,
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
+    
+    this.handleInputChangeCheckbox = this.handleInputChangeCheckbox.bind(this);
+    this.handleInputChangeDropdown = this.handleInputChangeDropdown.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
     this.keys = this.keys.bind(this); 
     this.marksSlider = this.marksSlider.bind(this);
-
-    this.forms = {
-      weight: { 
-        title: 'Waga konia',
-        input: 
-          <DropDown
-            dropDownInput={['400kg', '500kg', '600kg', '700kg', '800kg']}
-            onChange={this.handleInputChange}
-            value={this.state.dropDownInput}
-          />,
-      },
-      forage: {
-        title: 'Wybierz paszę, którą chcesz karmić swojego konia',
-        input: 
-          <CheckBox
-            checkBoxInput={['Owies', 'Jęczmień', 'Wysłodki buraczane', 'Drozdze pastewne']}
-            onChange={this.handleInputChange}
-            checked={this.state.checkBoxInpu}
-          />,
-      },
-      work: { 
-        title: 'Wybierz poziom pracy swojego konia',
-        input: 
-          <SliderWork
-            marks={this.marksSlider()}
-            onChange={this.handleSliderChange}
-            defaultValue={this.state.workInput}
-          />,
-      },
-    }
   }
 
   keys(workInput) {
@@ -60,47 +32,78 @@ class App extends Component {
     }
 
   marksSlider() {
-    const workInput=['Brak pracy', 'Lekka praca', 'Średnia praca', 'Cięzka praca']
+    const workInput = formsData.workInput
     const marks = {};
     this.keys(workInput).forEach((key, i) => marks[key] = workInput[i]);
       return marks
     }
 
   handleSliderChange(defaultValue) {
-    console.log(defaultValue)
-  
+    // console.log(defaultValue)
+
     this.setState({
       workInput: defaultValue,
     })
   }
-    
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    // console.log(value)
-  
 
+  handleInputChangeDropdown(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    // console.log(name)
+  
     this.setState({
       [name]: value
+    });
+    // console.log(name, value)
+  }
+  
+  componentWillMount = () => {
+    this.selectedCheckboxes = new Set();
+  }
+
+  handleInputChangeCheckbox(event) {
+    const target = event.target;
+    const name = target.name;
+
+    if (this.selectedCheckboxes.has(name)) {
+      this.selectedCheckboxes.delete(name);
+    } else {
+      this.selectedCheckboxes.add(name);
+    }
+    
+    this.setState({
+      selectedCheckboxes: this.selectedCheckboxes
     });
   }
 
   render() {
-
+    console.log(this.state.selectedCheckboxes)
     return (
       <div className="App">
         <Section
-          titleValue={this.forms.weight.title}
-          input={this.forms.weight.input}
+          titleValue={formsData.weightTitle}
+          input={<DropDown
+            dropDownInput={formsData.weightInput}
+            onChange={this.handleInputChangeDropdown}
+            value={this.state.dropDownInput}
+          />}
         />
         <Section
-          titleValue={this.forms.forage.title}
-          input={this.forms.forage.input}
+          titleValue={formsData.workTitle}
+          input={<SliderWork
+            marks={this.marksSlider()}
+            onChange={this.handleSliderChange}
+            defaultValue={this.state.workInput}
+          />}
         />
         <Section
-          titleValue={this.forms.work.title}
-          input={this.forms.work.input}
+          titleValue={formsData.forageTitle}
+          input={<CheckBox
+            checkBoxInput={formsData.forageInput}
+            onChange={this.handleInputChangeCheckbox}
+            checked={this.state.checkBoxInput}
+          />}
         />
       </div>
     )
