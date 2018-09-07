@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox component renders the checkboxes correctly renders correctly 1`] = `
+<div
+  className="pasza"
+>
+  <form>
+    <div>
+      <label>
+        <input
+          checked={[MockFunction]}
+          name="Owies"
+          onChange={[MockFunction]}
+          type="checkbox"
+        />
+        Owies
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={[MockFunction]}
+          name="Jęczmień"
+          onChange={[MockFunction]}
+          type="checkbox"
+        />
+        Jęczmień
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={[MockFunction]}
+          name="Wysłodki buraczane"
+          onChange={[MockFunction]}
+          type="checkbox"
+        />
+        Wysłodki buraczane
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={[MockFunction]}
+          name="Drozdze pastewne"
+          onChange={[MockFunction]}
+          type="checkbox"
+        />
+        Drozdze pastewne
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={[MockFunction]}
+          name="Siano"
+          onChange={[MockFunction]}
+          type="checkbox"
+        />
+        Siano
+      </label>
+    </div>
+  </form>
+</div>
+`;

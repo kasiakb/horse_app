@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallSlider component renders the small sliders correctly renders correctly 1`] = `
+<div>
+  <form>
+    <div
+      style={
+        Object {
+          "margin": 50,
+          "width": 400,
+        }
+      }
+    >
+      <label>
+        Owies
+        <div
+          className="rc-slider rc-slider-with-marks Owies"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onTouchStart={[Function]}
+          style={undefined}
+        >
+          <div
+            className="rc-slider-rail"
+            style={Object {}}
+          />
+          <div
+            className="rc-slider-track"
+            style={
+              Object {
+                "left": "0%",
+                "visibility": "visible",
+                "width": "0%",
+              }
+            }
+          />
+          <div
+            className="rc-slider-step"
+          >
+            <span
+              className="rc-slider-dot rc-slider-dot-active"
+              style={
+                Object {
+                  "left": "0%",
+                }
+              }
+            />
+            <span
+              className="rc-slider-dot"
+              style={
+                Object {
+                  "left": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            className="rc-slider-mark"
+          >
+            <span
+              className="rc-slider-mark-text rc-slider-mark-text-active"
+              style={
+                Object {
+                  "left": "0%",
+                  "marginLeft": "-45%",
+                  "width": "90%",
+                }
+              }
+            >
+              0 kg
+            </span>
+            <span
+              className="rc-slider-mark-text"
+              style={
+                Object {
+                  "left": "100%",
+                  "marginLeft": "-45%",
+                  "width": "90%",
+                }
+              }
+            >
+              2 kg
+            </span>
+          </div>
+        </div>
+      </label>
+    </div>
+  </form>
+</div>
+`;
