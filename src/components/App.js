@@ -6,7 +6,7 @@ import CheckBox from './CheckBox';
 import SliderWork from './SliderWork';
 import formsData from '../formsData.json';
 import ResultSection from './ResultSection';
-import SmallSliderForage from './SmallSliderForage'
+// import SmallSliderForage from './SmallSliderForage'
 
 class App extends React.Component {
   constructor(props) {
