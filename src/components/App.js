@@ -6,6 +6,10 @@ import CheckBox from './CheckBox';
 import SliderWork from './SliderWork';
 import formsData from '../formsData.json';
 import ResultSection from './ResultSection';
+import {
+  marksSlider,
+  selectedCheckboxes,
+} from './App-functions';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,8 +18,6 @@ class App extends React.Component {
     this.handleInputChangeCheckbox = this.handleInputChangeCheckbox.bind(this);
     this.handleInputChangeDropdown = this.handleInputChangeDropdown.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
-    this.keys = this.keys.bind(this); 
-    this.marksSlider = this.marksSlider.bind(this);
   
     this.state = {
       dropDownInput: formsData.weightInput[2],
@@ -23,24 +25,7 @@ class App extends React.Component {
       workInput: 66,
     };
   } 
-    
-
-  keys(workInput) {
-      const length = workInput.length - 1
-      const delta = 100/length;
-      const numericKeys = workInput.map((_, i) => {
-        return delta*i
-      })
-      return numericKeys
-    }
-
-  marksSlider() {
-    const workInput = formsData.workInput
-    const marks = {};
-    this.keys(workInput).forEach((key, i) => marks[key] = workInput[i]);
-      return marks
-    }
-
+  
   handleSliderChange(defaultValue) {
 
     this.setState({
@@ -49,37 +34,26 @@ class App extends React.Component {
   }
 
   handleInputChangeDropdown(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const value = event.target.value;
+    const name = event.target.name;
   
     this.setState({
       [name]: value
     });
   }
 
-  // componentWillMount () {
-  //   this.selectedCheckboxes = new Set();
-  // }
-
-  
   componentWillMount () {
     this.selectedCheckboxes = new Set();
   }
 
   handleInputChangeCheckbox(event) {
-    const target = event.target;
-    const name = target.name;
-
-    if (this.selectedCheckboxes.has(name)) {
-      this.selectedCheckboxes.delete(name);
-    } else {
-      this.selectedCheckboxes.add(name);
-    }
+    const name = event.target.name;
+    selectedCheckboxes(this.selectedCheckboxes, name)
     
     this.setState({
       selectedCheckboxes: this.selectedCheckboxes
     });
+    console.log(this.state.selectedCheckboxes)
   }
 
   selectedCheckboxesArr() {
@@ -87,20 +61,8 @@ class App extends React.Component {
     return array
   }
 
-  // test() {
-  //   if (4 !== 'object') {
-  //     throw new Error ('This is not an array')
-  //   }
-  // }
-
-  sum(a, b) {
-    return a + b;
-  }
-  
-  
-
   render() {
-  //  this.test()
+  
     return (
       <div>
         <div className="App">
@@ -115,7 +77,7 @@ class App extends React.Component {
           <FormSection
             titleValue={formsData.workTitle}
             input={<SliderWork
-              marks={this.marksSlider()}
+              marks={marksSlider(formsData.workInput)}
               onChange={this.handleSliderChange}
               defaultValue={this.state.workInput}
             />}
