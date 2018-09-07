@@ -8,7 +8,6 @@ class DropDown extends React.Component {
   }
 
   render() {
-    console.log(this.props.value)
     
     return (
       <div className='wagaKonia'>
