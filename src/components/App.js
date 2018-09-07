@@ -8,10 +8,9 @@ import Section from './Section';
 class App extends Component {
 
   render() {
-       const titleOne = 'Waga konia';
-       const titleTwo = 'Wybierz rodzaj paszy';
-       const titleThree = 'Wybierz poziom pracy swojego konia';
-        
+    const titleOne = 'Waga konia';
+    const titleTwo = 'Wybierz rodzaj paszy';
+    const titleThree = 'Wybierz poziom pracy swojego konia';
 
     return (
       <div className="App">
