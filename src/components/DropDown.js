@@ -11,7 +11,7 @@ class DropDown extends React.Component {
     return (
       <div className='wagaKonia'>
         <form>
-          <select>
+          <select type='weight' value={this.props.value} onChange={this.props.onChange}>
             {this.options(this.props.dropDownInput)}
           </select>
         </form>

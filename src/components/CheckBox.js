@@ -6,7 +6,11 @@ class CheckBox extends React.Component {
       return (
         <div> 
           <label>
-            <input type="checkbox"/>
+            <input 
+              type='checkbox'
+              checked={this.props.checked}
+              onChange={this.props.onChange}
+            />
             {forage}
           </label>
         </div>
@@ -22,7 +26,7 @@ class CheckBox extends React.Component {
         </form>
       </div>
     );
-  }
+  } 
 }
 
 export default CheckBox;
