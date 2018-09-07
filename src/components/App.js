@@ -1,17 +1,18 @@
 import React from 'react';
 import 'rc-slider/assets/index.css';
-import Section from './Section';
+import FormSection from './FormSection';
 import DropDown from './DropDown';
 import CheckBox from './CheckBox';
 import SliderWork from './SliderWork';
 import formsData from '../formsData.json';
+import ResultSection from './ResultSection';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dropDownInput: formsData.weightInput[2],
-      selectedCheckboxes: null,
+      selectedCheckboxes: [],
       workInput: 66,
     };
     
@@ -75,39 +76,52 @@ class App extends React.Component {
     this.setState({
       selectedCheckboxes: this.selectedCheckboxes
     });
+    // console.log(this.selectedCheckboxes.size)
+  }
+
+  selectedCheckboxesArr() {
+  let array = Array.from(this.selectedCheckboxes);
+  return array
   }
 
   render() {
-    console.log(this.state.selectedCheckboxes)
+    // console.log(this.state.selectedCheckboxes)
+    console.log(this.array)
     return (
-      <div className="App">
-        <Section
-          titleValue={formsData.weightTitle}
-          input={<DropDown
-            dropDownInput={formsData.weightInput}
-            onChange={this.handleInputChangeDropdown}
-            value={this.state.dropDownInput}
-          />}
-        />
-        <Section
-          titleValue={formsData.workTitle}
-          input={<SliderWork
-            marks={this.marksSlider()}
-            onChange={this.handleSliderChange}
-            defaultValue={this.state.workInput}
-          />}
-        />
-        <Section
-          titleValue={formsData.forageTitle}
-          input={<CheckBox
-            checkBoxInput={formsData.forageInput}
-            onChange={this.handleInputChangeCheckbox}
-            checked={this.state.checkBoxInput}
-          />}
-        />
+      <div>
+        <div className="App">
+          <FormSection
+            titleValue={formsData.weightTitle}
+            input={<DropDown
+              dropDownInput={formsData.weightInput}
+              onChange={this.handleInputChangeDropdown}
+              value={this.state.dropDownInput}
+            />}
+          />
+          <FormSection
+            titleValue={formsData.workTitle}
+            input={<SliderWork
+              marks={this.marksSlider()}
+              onChange={this.handleSliderChange}
+              defaultValue={this.state.workInput}
+            />}
+          />
+          <FormSection
+            titleValue={formsData.forageTitle}
+            input={<CheckBox
+              checkBoxInput={formsData.forageInput}
+              onChange={this.handleInputChangeCheckbox}
+              checked={this.state.checkBoxInput}
+            />}
+          />
+          <ResultSection
+            selectedCheckboxes={this.selectedCheckboxesArr()}
+          />
+        </div>
       </div>
     )
   }
 }
+
 
 export default App;
